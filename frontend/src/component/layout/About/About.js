@@ -27,7 +27,7 @@ const About = () => {
             </Button>
             <span>
               This is a sample wesbite made by @meshivamkushwaha. Only with the
-              purpose to teach MERN Stack on the channel 6 Pack Programmer
+              purpose to learn MERN Stack and Redux
             </span>
           </div>
           <div className="aboutSectionContainer2">
