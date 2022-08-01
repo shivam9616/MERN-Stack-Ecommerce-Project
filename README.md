@@ -38,3 +38,14 @@ CLOUDINARY_NAME
 CLOUDINARY_API_KEY
 CLOUDINARY_API_SECRET
 _fill each filed with your info respectively_
+
+FOR HEROKU 
+
+heroku command to install dependencies and devdependencies both :
+
+heroku config:set NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false YARN2_SKIP_PRUNING=true
+RESPECTIVELY
+
+env variable for heroku
+
+NODE_ENV = PRODUCTION
