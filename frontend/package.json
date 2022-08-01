@@ -61,6 +61,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.29.109:4000"
-  
+  "proxy": "http://192.168.29.109:4000",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
+  }
 }
