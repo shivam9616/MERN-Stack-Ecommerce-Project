@@ -93,7 +93,6 @@ function App() {
           <Route exact path="/account" element={<Profile />} />
           <Route exact path="/me/update" element={<UpdateProfile />} />
           <Route exact path="/password/update" element={<UpdatePassword />} />
-   
           <Route exact path="/shipping" element={<Shipping />} />
           <Route exact path="/orders/confirm" element={<ConfirmOrder />} />
           <Route exact path="/success" element={<OrderSuccess />} />
