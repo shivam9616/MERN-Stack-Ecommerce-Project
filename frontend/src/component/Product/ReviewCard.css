@@ -1,0 +1,6 @@
+.reviewCard > img {
+    /* width: 1vmax; */
+    height: 5vmax;
+    border-radius: 100%;
+    transition: all 0.5s;
+  }
