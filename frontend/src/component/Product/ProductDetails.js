@@ -2,7 +2,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetails, newReview, clearErrors } from "../../actions/productAction"; 
+import {
+  getProductDetails,
+  newReview,
+  clearErrors,
+} from "../../actions/productAction";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
@@ -23,10 +27,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-
-  const { user } = useSelector(
-    (state) => state.user
-  );
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
@@ -44,9 +45,9 @@ const ProductDetails = () => {
   };
 
   const [quantity, setQuantity] = useState(1);
-  const [open, setOpen] = useState(false)
-  const [rating, setRating] = useState(0)
-  const [comment, setComment] = useState("")
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
 
   const increaseQuantity = () => {
     if (product.Stock <= quantity) return;
@@ -63,13 +64,17 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, quantity));
-    alert.success("Item Added To Cart");
+    if (isAuthenticated) {
+      dispatch(addItemsToCart(id, quantity));
+      alert.success("Item Added To Cart");
+    } else {
+      alert.error("Please Login to Add Items in Cart");
+    }
   };
 
   const submitReviewToggle = () => {
-    open ? setOpen(false) : setOpen(true)
-  }
+    open ? setOpen(false) : setOpen(true);
+  };
 
   const reviewSubmitHandler = () => {
     const myForm = new FormData();
@@ -77,11 +82,11 @@ const ProductDetails = () => {
     myForm.set("rating", rating);
     myForm.set("comment", comment);
     myForm.set("productId", id);
-    myForm.set("imgUrl", user.avatar.url)
+    myForm.set("imgUrl", user.avatar.url);
 
     dispatch(newReview(myForm));
     setOpen(false);
-  }
+  };
 
   useEffect(() => {
     if (error) {
@@ -94,9 +99,9 @@ const ProductDetails = () => {
       dispatch(clearErrors());
     }
 
-    if(success){
-      alert.success("Review Submitted Successfully")
-      dispatch({ type: NEW_REVIEW_RESET});
+    if (success) {
+      alert.success("Review Submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
     }
 
     dispatch(getProductDetails(id));
@@ -133,7 +138,11 @@ const ProductDetails = () => {
                 <Rating {...options} />
                 <span className="detailsBlock-2-span">
                   {" "}
-                  ({` ${product.numOfReviews} ${product.numOfReviews > 1 ? "Reviews" : "Review" } `})
+                  (
+                  {` ${product.numOfReviews} ${
+                    product.numOfReviews > 1 ? "Reviews" : "Review"
+                  } `}
+                  )
                 </span>
               </div>
               <div className="detailsBlock-3">
@@ -162,7 +171,9 @@ const ProductDetails = () => {
                 Description : <p>{product.description}</p>
               </div>
 
-              <button className="submitReview" onClick={submitReviewToggle}>Submit Review</button>
+              <button className="submitReview" onClick={submitReviewToggle}>
+                Submit Review
+              </button>
             </div>
           </div>
 
@@ -189,8 +200,12 @@ const ProductDetails = () => {
               ></textarea>
             </DialogContent>
             <DialogActions>
-              <Button onClick={submitReviewToggle} color="secondary">Cancel</Button>
-              <Button onClick={reviewSubmitHandler} color="primary">Submit</Button>
+              <Button onClick={submitReviewToggle} color="secondary">
+                Cancel
+              </Button>
+              <Button onClick={reviewSubmitHandler} color="primary">
+                Submit
+              </Button>
             </DialogActions>
           </Dialog>
 
