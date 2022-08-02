@@ -27,7 +27,7 @@ const Products = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [price, setPrice] = useState([0, 25000]);
+  const [price, setPrice] = useState([0, 1000000]);
 
   const [category, setCategory] = useState("");
 
