@@ -86,7 +86,7 @@ const Products = () => {
               valueLabelDisplay="auto"
               arial-labelledby="range-slider"
               min={0}
-              max={25000}
+              max={1000000}
             />
 
             <Typography>Categories</Typography>
