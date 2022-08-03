@@ -13,7 +13,7 @@ const ConfirmOrder = () => {
 
     const subtotal = cartItems.reduce((acc, item) => acc +  item.quantity * item.price, 0)
 
-    const shippingCharges = subtotal > 1000 ? 0 : 0;
+    const shippingCharges = subtotal > 1000 ? 0 : 200;
 
     const tax = subtotal * 0.18;
 

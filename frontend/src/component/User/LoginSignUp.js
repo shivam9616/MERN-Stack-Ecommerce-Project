@@ -53,7 +53,12 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    dispatch(register(myForm));
+
+    if(avatar === ""){
+      alert.error("Please select a Profile Image")
+    } else {
+      dispatch(register(myForm));
+    }
   };
 
   const registerDataChange = (e) => {

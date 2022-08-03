@@ -52,7 +52,6 @@ const UpdateProfile = () => {
   };
 
   useEffect(() => {
-
     if (user) {
       setName(user.name);
       setEmail(user.email);
@@ -60,8 +59,8 @@ const UpdateProfile = () => {
     }
 
     if (error) {
-      alert.error(error);
-      // dispatch(clearErrors());
+      alert.error("Please select a Profile Image under 800kB");
+      // dispatch(clearErrors());                                     // Crashing page                    
     }
 
     if (isUpdated) {
@@ -70,7 +69,7 @@ const UpdateProfile = () => {
       navigate("/account");
 
       dispatch({
-        type: UPDATE_PROFILE_RESET,
+        type: UPDATE_PROFILE_RESET, 
       });
     } else {
       navigate("/me/update");

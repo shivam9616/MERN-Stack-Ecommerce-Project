@@ -66,8 +66,11 @@ const NewProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
+    if(images.length > 0){
     dispatch(createProduct(myForm));
-    console.log(myForm);
+    } else {
+      alert.error("Please Select Product Images");
+    }
   };
 
   const createProductImagesChange = (e) => {
