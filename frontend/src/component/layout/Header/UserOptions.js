@@ -30,7 +30,7 @@ const UserOptions = ({ user }) => {
   if (user.role === "admin") {
     options.unshift({
       icon: <DashboardIcon />,
-      name: "Dshboard",
+      name: "Dashboard",
       func: dashboard,
     });
   }
