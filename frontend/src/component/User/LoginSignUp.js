@@ -5,7 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { useDispatch, useSelector } from "react-redux";
-import { login, register } from "../../actions/userAction";
+import { login, register} from "../../actions/userAction";
 import FaceIcon from "@material-ui/icons/Face";
 import { useAlert } from "react-alert";
 
@@ -54,11 +54,9 @@ const LoginSignUp = () => {
     myForm.set("password", password);
     myForm.set("avatar", avatar);
 
-    if(avatar === ""){
-      alert.error("Please select a Profile Image")
-    } else {
+    
       dispatch(register(myForm));
-    }
+    
   };
 
   const registerDataChange = (e) => {
@@ -82,7 +80,7 @@ const LoginSignUp = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      // dispatch(clearErrors());
+      // dispatch(clearErrors());                                     // Crashing page                    
     }
 
     if (isAuthenticated) {
@@ -193,6 +191,7 @@ const LoginSignUp = () => {
                     name="avatar"
                     accept="image/*"
                     onChange={registerDataChange}
+                    required
                   />
                 </div>
                 <input

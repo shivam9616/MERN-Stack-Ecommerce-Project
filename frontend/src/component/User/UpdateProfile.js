@@ -120,6 +120,7 @@ const UpdateProfile = () => {
                     name="avatar"
                     accept="image/*"
                     onChange={updateProfileDataChange}
+                    required
                   />
                 </div>
                 <input
