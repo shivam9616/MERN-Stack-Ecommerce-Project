@@ -79,7 +79,7 @@ const LoginSignUp = () => {
   const redirect = location.search ? "/shipping" : "/account" ; 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      alert.error("Please select a Profile Image under 800kB");
       // dispatch(clearErrors());                                     // Crashing page                    
     }
 
